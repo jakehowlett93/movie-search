@@ -1,3 +1,5 @@
+//this can be deleted at some point
+
 import React from 'react';
 import { connect } from 'react-redux';
 import { selectMovie } from '../actions';
