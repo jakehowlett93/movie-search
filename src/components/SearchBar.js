@@ -1,24 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { searchMovie } from '../actions';
+import { fetchMovies } from '../actions';
+import { searchValue } from '../actions';
 
-const SearchBar = ({ searchMovie, searchValue }) => {
+const SearchBar = ({ fetchMovies, searchValue, currentValue }) => {
   
     const onFormSubmit = (event) => {
         event.preventDefault();
+        fetchMovies()
     }
+
+    
   
     return (
     <div className="ui container">
-        <form onSubmit={onFormSubmit}>
+        <form onSubmit={onFormSubmit} >
             <div className="ui input">
                 <input 
                 className=""
                 type="text"
-                value={searchValue}
-                onChange={(e) => searchMovie(e.target.value)}
+                value={currentValue}
+                onChange={(e) => searchValue(e.target.value)}
                 />
-                <div className="ui teal button">Search</div>
+                <input type="button" className="ui teal button" value="Search" onClick={onFormSubmit}></input>
             </div>
         </form>
     </div>
@@ -26,7 +30,7 @@ const SearchBar = ({ searchMovie, searchValue }) => {
 }
 
 const mapStateToProps = (state) => {
-    return { searchValue: state.searchValue }
+    return { currentValue: state.searchValue }
 }
 
-export default connect(mapStateToProps, { searchMovie })(SearchBar);
+export default connect(mapStateToProps, { fetchMovies, searchValue })(SearchBar);

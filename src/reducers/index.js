@@ -25,8 +25,23 @@ const searchedValueReducer = (searchValue = '', action) => {
     return searchValue
 }
 
+const fetchedMoviesReducer = (fetchedMovies = [], action) => {
+    if (action.type === 'MOVIES_FETCHED') {
+        const ombdSearchData = action.payload;
+        console.log(ombdSearchData.data.Search)
+        fetchedMovies = ombdSearchData.data.Search.map((movie) => {
+            return movie.Title
+        })
+        console.log(fetchedMovies)
+        return fetchedMovies;
+    }
+
+    return fetchedMovies
+}
+
 export default combineReducers({
     movies: moviesReducer,
     selectedMovie: selectedMovieReducer,
-    searchValue: searchedValueReducer
+    searchValue: searchedValueReducer,
+    fetchedMovies: fetchedMoviesReducer
 });
