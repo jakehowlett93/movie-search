@@ -1,12 +1,5 @@
 import ombd from '../apis/omdb';
 
-export const selectMovie = (movie) => {
-    return {
-        type: 'MOVIE_SELECTED',
-        payload: movie
-    };
-};
-
 export const searchValue = (value) => {
     return {
         type: 'MOVIE_SEARCHED',
@@ -19,6 +12,22 @@ export const fetchMovies = () => async (dispatch, getState) => {
 
     dispatch({
         type: 'MOVIES_FETCHED',
-        payload: response
+        payload: response.data.Search
     });
 };
+
+export const selectMovie = (movieId) => {
+    return {
+        type: 'MOVIE_SELECTED',
+        payload: movieId
+    }
+}
+
+export const fetchDetails = (movieID) => async (dispatch, getState) => {
+    const response = await ombd.get(`?apikey=13348aee&i=${movieID}&page=1` );
+
+        dispatch({
+            type: 'DETAILS_FETCHED',
+            payload: response.data
+        })
+}

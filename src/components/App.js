@@ -2,21 +2,20 @@ import React from 'react';
 import MovieList from './MovieList';
 import MovieDetail from './MovieDetail';
 import SearchBar from './SearchBar';
+import './app.css';
 
 const App = () => {
     return (
-    <div className="ui container relaxed grid">
-        <div className="ui row">
+    <div className="app-container ui container relaxed">
+        <div className="ui fixed-left fixed-padding">
             <SearchBar />
         </div>
-        <div className="ui row">
-            <div className="column six wide">
-                <MovieList />
-            </div>
-            <div className="column wide">
-                <MovieDetail />
-            </div>
-        </div>   
+        <div className="ui movie-list">
+            <MovieList />
+        </div>  
+        <div className="ui fixed-right fixed-padding">
+            <MovieDetail />
+        </div> 
     </div>
     )
 };

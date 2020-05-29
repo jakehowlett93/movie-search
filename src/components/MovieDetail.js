@@ -1,25 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const MovieDetail = ({ movie }) => {
-    if (!movie) {
-        return <div>Select a movie</div>
+const MovieDetail = ({ fetchedDetails}) => {
+    if (!fetchedDetails) {
+        return <div></div>
     }
     
     return (
         <div>
-            <h3>Details for:</h3>
+            <h3>{fetchedDetails.Title} </h3>
             <p>
-                Title: {movie.title} 
+                Title: {fetchedDetails.Title} 
                 <br />
-                Duration: {movie.duration}
+                Runtime: {fetchedDetails.Runtime}
+                <br />
+                Ratings: {fetchedDetails.Ratings[0].Value}
+                <br />
+                Plot: {fetchedDetails.Plot}
             </p>
         </div>
     )
 };
 
 const mapStateToProps = (state) => {
-   return { movie: state.selectedMovie }
+   return { fetchedDetails: state.fetchedDetails }
 };
 
-export default connect(mapStateToProps)(MovieDetail)
+export default connect(mapStateToProps, {})(MovieDetail)

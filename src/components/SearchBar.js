@@ -15,7 +15,7 @@ const SearchBar = ({ fetchMovies, searchValue, currentValue }) => {
     return (
     <div className="ui container">
         <form onSubmit={onFormSubmit} >
-            <div className="ui input">
+            <div className="ui input big">
                 <input 
                 className=""
                 type="text"
