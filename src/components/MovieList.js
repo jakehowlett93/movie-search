@@ -1,13 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { selectMovie } from '../actions';
+import { fetchDetails } from '../actions';
 
 class MovieList extends React.Component {
     renderList() {
         return this.props.fetchedMovies.map((movie) => {
             return (
-                <div className="item" key={movie}>
-                    <div className="content" onClick={() => this.props.selectMovie(movie)}><h3>{movie}</h3></div>
+                <div className="item" key={movie.imdbID}>
+                    <div className="content" onClick={() => this.props.fetchDetails(movie.imdbID)}>
+                        <img className='ui tiny left floated image' src={movie.Poster} alt='a poster of the movie'/>
+                        <h3>{movie.Title}</h3>
+                        <p>{movie.Year}</p>
+                    </div>
                 </div>
             )
         })
@@ -22,4 +26,4 @@ const mapStateToProps = (state) => {
     return { fetchedMovies: state.fetchedMovies}
 }
 
-export default connect(mapStateToProps, { selectMovie })(MovieList);
+export default connect(mapStateToProps, {fetchDetails})(MovieList);

@@ -1,47 +1,43 @@
 import { combineReducers } from 'redux';
 
-const moviesReducer = () => {
-    return [
-        {title: 'movie1', duration: 2.16},
-        {title: 'movie2', duration: 2.00},
-        {title: 'movie3', duration: 1.16},
-        {title: 'movie4', duration: 3.16}
-    ];
-};
-
-const selectedMovieReducer = (selectedMovie = null, action) => {
-    if (action.type === 'MOVIE_SELECTED') {
-        return action.payload;
-    }
-
-    return selectedMovie;
-};
-
-const searchedValueReducer = (searchValue = '', action) => {
+const searchedValueReducer = (state = '', action) => {
     if (action.type === 'MOVIE_SEARCHED') {
         return action.payload;
     }
 
-    return searchValue
+    return state;
 }
 
-const fetchedMoviesReducer = (fetchedMovies = [], action) => {
-    if (action.type === 'MOVIES_FETCHED') {
-        const ombdSearchData = action.payload;
-        console.log(ombdSearchData.data.Search)
-        fetchedMovies = ombdSearchData.data.Search.map((movie) => {
-            return movie.Title
-        })
-        console.log(fetchedMovies)
-        return fetchedMovies;
+const fetchedMoviesReducer = (state = [], action) => {
+    switch (action.type) {
+        case 'MOVIES_FETCHED':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
+const selectedMovieReducer = (state = '', action) => {
+    switch (action.type) {
+        case 'MOVIE_SELECTED':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
+const fetchedDetailsReducer = (state = null, action) => {
+    if (action.type === 'DETAILS_FETCHED') {
+        console.log(action.payload)
+        return action.payload;
     }
 
-    return fetchedMovies
-}
+    return state;
+};
 
 export default combineReducers({
-    movies: moviesReducer,
-    selectedMovie: selectedMovieReducer,
     searchValue: searchedValueReducer,
-    fetchedMovies: fetchedMoviesReducer
+    fetchedMovies: fetchedMoviesReducer,
+    selectedMovie: selectedMovieReducer,
+    fetchedDetails: fetchedDetailsReducer
 });
