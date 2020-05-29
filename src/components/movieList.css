@@ -1,0 +1,11 @@
+.movie-title:hover {
+    color: #0000EE;
+}
+
+.container {
+    padding-bottom: 5em;
+}
+
+.image {
+    max-height: 150px;
+}

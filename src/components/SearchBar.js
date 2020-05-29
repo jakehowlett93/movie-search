@@ -13,16 +13,16 @@ const SearchBar = ({ fetchMovies, searchValue, currentValue }) => {
     
   
     return (
-    <div className="ui container">
+    <div className="">
         <form onSubmit={onFormSubmit} >
-            <div className="ui input big">
+            <div className="">
                 <input 
                 className=""
                 type="text"
                 value={currentValue}
                 onChange={(e) => searchValue(e.target.value)}
                 />
-                <input type="button" className="ui teal button" value="Search" onClick={onFormSubmit}></input>
+                <input type="button" className="" value="Search" onClick={onFormSubmit}></input>
             </div>
         </form>
     </div>

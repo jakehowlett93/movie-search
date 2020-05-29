@@ -4,16 +4,18 @@ import MovieDetail from './MovieDetail';
 import SearchBar from './SearchBar';
 import './app.css';
 
+
 const App = () => {
     return (
-    <div className="app-container ui container relaxed">
-        <div className="ui fixed-left fixed-padding">
+    <div className="app-container">
+        <img src={'./omdbLogo'} alt='OMDb search'/>
+        <div className="fixed-searchbar fixed-padding">
             <SearchBar />
         </div>
-        <div className="ui movie-list">
+        <div className="movie-list">
             <MovieList />
         </div>  
-        <div className="ui fixed-right fixed-padding">
+        <div className="fixed-details fixed-padding">
             <MovieDetail />
         </div> 
     </div>
