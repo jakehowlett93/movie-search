@@ -1,0 +1,16 @@
+.images {
+    position: relative;
+}
+
+.blurred-image {
+    min-width:100%;
+    filter: blur(5px);
+    opacity: 20%;
+    height: 300px;
+}
+
+.details-image {
+    height: 300px;
+    max-width: 200px;
+    position: absolute;
+}

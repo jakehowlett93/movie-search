@@ -2,23 +2,32 @@ import React from 'react';
 import MovieList from './MovieList';
 import MovieDetail from './MovieDetail';
 import SearchBar from './SearchBar';
-import './app.css';
+import './App.css';
+
+//TODO need to refactor css classnames
 
 
 const App = () => {
     return (
-    <div className="app-container">
-        <img src={'./omdbLogo'} alt='OMDb search'/>
-        <div className="fixed-searchbar fixed-padding">
-            <SearchBar />
+        <div className="wrapper">
+            <div className="app-container">
+                <div className='header'>
+                    <img className='logo' src={require('../assets/omdbLogo.png')} alt='OMDb search'/>
+                    <div className="searchbar-container">
+                        <SearchBar />
+                    </div>
+                </div>
+                <div className="list-details-container">
+                    <div className="list-container">
+                        <MovieList />
+                    </div>  
+                    <div className="details-container">
+                        <MovieDetail />
+                    </div>
+                </div>
+            </div>
         </div>
-        <div className="movie-list">
-            <MovieList />
-        </div>  
-        <div className="fixed-details fixed-padding">
-            <MovieDetail />
-        </div> 
-    </div>
+
     )
 };
 
