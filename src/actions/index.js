@@ -2,32 +2,57 @@ import ombd from '../apis/omdb';
 
 export const searchValue = (value) => {
     return {
-        type: 'MOVIE_SEARCHED',
+        type: 'SEARCH_VALUE',
         payload: value
     };
 };
 
-export const fetchMovies = () => async (dispatch, getState) => {
-    const response = await ombd.get(`?apikey=13348aee&s=${getState().searchValue}&page=1`  );
+export const fetchError = (error) => {
+    return {
+        type: 'FETCH_ERROR',
+        payload: error
+    }
+}
 
-    dispatch({
-        type: 'MOVIES_FETCHED',
-        payload: response.data.Search
-    });
+export const fetchSuccess = () => {
+    return {
+        type: 'FETCH_SUCCESS',
+        payload: ''
+    }
+}
+
+export const fetchMovies = () => async (dispatch, getState) => {
+    await ombd.get(`?apikey=13348aee&s=${getState().searchValue}&page=1`)
+    .then(response => {
+        if (response.data.Response === "False") {
+            dispatch(fetchError(response.data.Error))
+        } else {
+            dispatch(fetchSuccess())
+            dispatch({
+            type: 'FETCH_MOVIES',
+            payload: response.data.Search
+            })
+        }
+    })
+    .catch(error => console.log(error))
 };
 
 export const selectMovie = (movieId) => {
     return {
-        type: 'MOVIE_SELECTED',
+        type: 'SELECT_MOVIE',
         payload: movieId
     }
 }
 
 export const fetchDetails = (movieID) => async (dispatch, getState) => {
-    const response = await ombd.get(`?apikey=13348aee&i=${movieID}&page=1` );
-
+    await ombd.get(`?apikey=13348aee&i=${movieID}&page=1`)
+    .then(response => {
         dispatch({
-            type: 'DETAILS_FETCHED',
+            type: 'FETCH_DETAILS',
             payload: response.data
         })
+    })
+    .catch(error => console.log(error))
+
+        
 }
