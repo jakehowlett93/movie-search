@@ -1,16 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchDetails } from '../actions';
+import './movieList.css'
+//TODO refactor css classnames
 
 class MovieList extends React.Component {
     renderList() {
         return this.props.fetchedMovies.map((movie) => {
             return (
-                <div className="item" key={movie.imdbID}>
-                    <div className="content" onClick={() => this.props.fetchDetails(movie.imdbID)}>
-                        <img className='ui tiny left floated image' src={movie.Poster} alt='a poster of the movie'/>
-                        <h3>{movie.Title}</h3>
-                        <p>{movie.Year}</p>
+                <div className="container" key={movie.imdbID}>
+                    <div className="movie-content" onClick={() => this.props.fetchDetails(movie.imdbID)}>
+                        <img className='list-image' src={movie.Poster} alt='a poster of the movie'/>
+                        <div>
+                            <h3 className="movie-title">{movie.Title}</h3>
+                            <p>{movie.Year}</p>
+                        </div>
                     </div>
                 </div>
             )
@@ -18,7 +22,7 @@ class MovieList extends React.Component {
     }
 
     render () {
-        return <div className="ui divided list">{this.renderList()}</div>
+        return <div className="movie-list">{this.renderList()}</div>
     }
 }
 

@@ -1,25 +1,43 @@
-.fixed-left {
-    position: fixed;
-    top: 10px;
-    left: 0;
-    z-index: 9999;
-    width: 100%;
-    
-  }
-
-.fixed-right {
-    position: fixed;
-    top: 10px;
-    right: 0;
-    width: 50%;
+.wrapper {
+    background-color: rgb(215, 226, 230);
 }
 
 .app-container {
-    display: block;
+    margin-left: 20%;
+    margin-right: 20%;
+    max-width: 80vw;
+    height: 100vh;
 }
 
-.movie-list {
-    width: 50%;
+.header {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.logo {
     float: left;
+    height:80px;
+}
+
+.searchbar-container {
+    width: 100%;
+}
+
+.list-details-container {
+    height:100vh;
+    max-height: 90vh;
+    display: flex;
+}
+
+.list-container {
     padding-top: 5%;
+    background-color: white;
+}
+
+.details-container {
+    padding: 5% 15px 0 50px;
+    font-size: 1.5em;
+    font-family: Helvetica, sans-serif, Arial;
+    background-color: white;
+    width: 100%;
 }

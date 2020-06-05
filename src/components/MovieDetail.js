@@ -1,22 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import './MovieDetail.css';
+
+
 
 const MovieDetail = ({ fetchedDetails}) => {
     if (!fetchedDetails) {
-        return <div></div>
+        return <div>Search the Open Movie Database</div>
     }
     
     return (
-        <div>
-            <h3>{fetchedDetails.Title} </h3>
-            <p>
-                Title: {fetchedDetails.Title} 
+        <div className="details">
+            <h1>{fetchedDetails.Title} </h1>
+            <div className="images">
+                <img className="details-image" src={fetchedDetails.Poster} alt='The selected movie poster'></img>
+                <img className="blurred-image" src={fetchedDetails.Poster} alt='The selected movie poster'></img>
+
+            </div>
+            <p className="details-paragraph">
                 <br />
-                Runtime: {fetchedDetails.Runtime}
+                <span className="bold-text">Rating: </span>{fetchedDetails.Ratings[0].Value}
                 <br />
-                Ratings: {fetchedDetails.Ratings[0].Value}
+                <span className="bold-text">Release: </span>{fetchedDetails.Released}
                 <br />
-                Plot: {fetchedDetails.Plot}
+                <span className="bold-text">Runtime: </span>{fetchedDetails.Runtime}
+                <br />
+                <span className="bold-text">Cast: </span>{fetchedDetails.Actors}
+                <br />
+                <span className="bold-text">Plot: </span>{fetchedDetails.Plot}
             </p>
         </div>
     )

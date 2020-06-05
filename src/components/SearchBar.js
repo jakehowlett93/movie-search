@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { fetchMovies } from '../actions';
 import { searchValue } from '../actions';
 
+import './SearchBar.css';
+
 const SearchBar = ({ fetchMovies, searchValue, currentValue }) => {
   
     const onFormSubmit = (event) => {
@@ -13,16 +15,15 @@ const SearchBar = ({ fetchMovies, searchValue, currentValue }) => {
     
   
     return (
-    <div className="ui container">
+    <div className="">
         <form onSubmit={onFormSubmit} >
-            <div className="ui input big">
+            <div className="">
                 <input 
-                className=""
+                className="searchbar"
                 type="text"
                 value={currentValue}
                 onChange={(e) => searchValue(e.target.value)}
                 />
-                <input type="button" className="ui teal button" value="Search" onClick={onFormSubmit}></input>
             </div>
         </form>
     </div>
