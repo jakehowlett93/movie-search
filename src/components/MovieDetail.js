@@ -4,9 +4,11 @@ import './MovieDetail.css';
 
 
 
-const MovieDetail = ({ fetchedDetails}) => {
-    if (!fetchedDetails) {
+const MovieDetail = ({ fetchedDetails, error }) => {
+    if (!fetchedDetails && !error) {
         return <div>Search the Open Movie Database</div>
+    } else if (error) {
+        return <div>{error}</div>
     }
     
     return (
@@ -15,7 +17,6 @@ const MovieDetail = ({ fetchedDetails}) => {
             <div className="images">
                 <img className="details-image" src={fetchedDetails.Poster} alt='The selected movie poster'></img>
                 <img className="blurred-image" src={fetchedDetails.Poster} alt='The selected movie poster'></img>
-
             </div>
             <p className="details-paragraph">
                 <br />
@@ -34,7 +35,10 @@ const MovieDetail = ({ fetchedDetails}) => {
 };
 
 const mapStateToProps = (state) => {
-   return { fetchedDetails: state.fetchedDetails }
+   return { 
+       fetchedDetails: state.fetchedDetails,
+       error: state.error
+    }
 };
 
 export default connect(mapStateToProps, {})(MovieDetail)

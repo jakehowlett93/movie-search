@@ -1,16 +1,27 @@
 import { combineReducers } from 'redux';
 
 const searchedValueReducer = (state = '', action) => {
-    if (action.type === 'MOVIE_SEARCHED') {
+    if (action.type === 'SEARCH_VALUE') {
         return action.payload;
     }
 
     return state;
 }
 
+const errorReducer = (state = '', action) => {
+    switch (action.type) {
+        case 'FETCH_ERROR':
+            return action.payload;
+        case 'FETCH_SUCCESS':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 const fetchedMoviesReducer = (state = [], action) => {
     switch (action.type) {
-        case 'MOVIES_FETCHED':
+        case 'FETCH_MOVIES':
             return action.payload;
         default:
             return state;
@@ -19,7 +30,7 @@ const fetchedMoviesReducer = (state = [], action) => {
 
 const selectedMovieReducer = (state = '', action) => {
     switch (action.type) {
-        case 'MOVIE_SELECTED':
+        case 'SELECT_MOVIE':
             return action.payload;
         default:
             return state;
@@ -27,7 +38,7 @@ const selectedMovieReducer = (state = '', action) => {
 }
 
 const fetchedDetailsReducer = (state = null, action) => {
-    if (action.type === 'DETAILS_FETCHED') {
+    if (action.type === 'FETCH_DETAILS') {
         console.log(action.payload)
         return action.payload;
     }
@@ -37,6 +48,7 @@ const fetchedDetailsReducer = (state = null, action) => {
 
 export default combineReducers({
     searchValue: searchedValueReducer,
+    error: errorReducer,
     fetchedMovies: fetchedMoviesReducer,
     selectedMovie: selectedMovieReducer,
     fetchedDetails: fetchedDetailsReducer
