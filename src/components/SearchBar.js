@@ -5,6 +5,14 @@ import { searchValue } from '../actions';
 
 import './SearchBar.css';
 
+const sanitizeSearchValue = (value) => {
+    value
+        .trim()
+        .replace(/\s+/g, '+')
+        .toLowerCase();
+    return value;
+}
+
 const SearchBar = ({ fetchMovies, searchValue, currentValue }) => {
   
     const onFormSubmit = (event) => {
@@ -12,8 +20,6 @@ const SearchBar = ({ fetchMovies, searchValue, currentValue }) => {
         fetchMovies()
     }
 
-    
-  
     return (
     <div className="">
         <form onSubmit={onFormSubmit} >
@@ -22,7 +28,7 @@ const SearchBar = ({ fetchMovies, searchValue, currentValue }) => {
                 className="searchbar"
                 type="text"
                 value={currentValue}
-                onChange={(e) => searchValue(e.target.value)}
+                onChange={(e) => searchValue(sanitizeSearchValue(e.target.value))}
                 />
             </div>
         </form>
