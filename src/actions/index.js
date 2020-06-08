@@ -15,15 +15,25 @@ export const fetchError = (error) => {
 }
 
 export const fetchSuccess = () => {
+    console.log('fetchsuccess')
     return {
         type: 'FETCH_SUCCESS',
         payload: ''
     }
 }
 
+export const clearDetails = () => {
+    return {
+        type: 'CLEAR_DETAILS',
+        payload: null
+    }
+
+}
+
 export const fetchMovies = () => async (dispatch, getState) => {
     await ombd.get(`?apikey=13348aee&s=${getState().searchValue}&page=1`)
     .then(response => {
+        dispatch(clearDetails())
         if (response.data.Response === "False") {
             dispatch(fetchError(response.data.Error))
         } else {
@@ -34,9 +44,7 @@ export const fetchMovies = () => async (dispatch, getState) => {
             })
         }
     })
-    .catch(
-        dispatch(fetchError('There has been a network error please try again'))
-    )
+    .catch(e => console.log(e))
 };
 
 export const selectMovie = (movieId) => {
@@ -55,7 +63,5 @@ export const fetchDetails = (movieID) => async (dispatch, getState) => {
             payload: response.data
         })
     })
-    .catch(error => console.log(error))
-
-        
+    .catch(e => console.log(e))
 }
