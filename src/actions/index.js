@@ -34,7 +34,9 @@ export const fetchMovies = () => async (dispatch, getState) => {
             })
         }
     })
-    .catch(error => console.log(error))
+    .catch(
+        dispatch(fetchError('There has been a network error please try again'))
+    )
 };
 
 export const selectMovie = (movieId) => {
@@ -47,6 +49,7 @@ export const selectMovie = (movieId) => {
 export const fetchDetails = (movieID) => async (dispatch, getState) => {
     await ombd.get(`?apikey=13348aee&i=${movieID}&page=1`)
     .then(response => {
+        dispatch(fetchSuccess())
         dispatch({
             type: 'FETCH_DETAILS',
             payload: response.data
