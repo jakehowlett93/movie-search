@@ -12,7 +12,7 @@ class MovieList extends React.Component {
                     <div className="movie-content" onClick={() => this.props.fetchDetails(movie.imdbID)}>
                         <img className='list-image' src={movie.Poster} alt='a poster of the movie'/>
                         <div>
-                            <h3 className="movie-title">{movie.Title}</h3>
+                            <h3 className="movie-title multi-line-truncate">{movie.Title}</h3>
                             <p>{movie.Year}</p>
                         </div>
                     </div>
