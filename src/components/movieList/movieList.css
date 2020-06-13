@@ -2,15 +2,19 @@
     color: #0000EE;
 }
 
+.movie-title {
+    font-size: 14px;
+}
+
 .bold-text {
     font-weight: bold;
 }
 
 .list-image {
-    max-height: 150px;
-    padding-right: 30px;
-    padding-left: 10px;
-    max-width: 100px;
+    height: 65px;
+    padding-right: 15px;
+    padding-left: 5px;
+    width: 50px;
 }
 
 .container {
@@ -31,7 +35,26 @@
 .movie-list {
     height: 84vh;
     overflow-y: auto;
-    width: 380px;
+    width: 200px;
     padding-right: 10px;
     padding-left: 10px;
 }
+
+@media only screen and (min-width: 900px) {
+    
+    .list-image {
+        height: 80px;
+        padding-right: 30px;
+        padding-left: 10px;
+        width: 100px;
+    }
+    
+    .movie-list {
+        width: 380px;
+    }
+
+    .movie-title {
+        font-size: 1.17em;
+    }
+}
+
