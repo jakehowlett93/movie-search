@@ -1,7 +1,7 @@
 import React from 'react';
-import MovieList from './MovieList';
-import MovieDetail from './MovieDetail';
-import SearchBar from './SearchBar';
+import MovieList from './movieList/MovieList';
+import MovieDetail from './movieDetail/MovieDetail';
+import SearchBar from './searchBar/SearchBar';
 import './app.css';
 
 //TODO need to refactor css classnames

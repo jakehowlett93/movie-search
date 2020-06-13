@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchDetails } from '../actions';
+import fetchDetails from '../../actions/fetchDetails';
 import './movieList.css'
 //TODO refactor css classnames
 
