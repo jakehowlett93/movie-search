@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchDetails } from '../actions';
+import fetchDetails from '../../actions/fetchDetails';
 import './movieList.css'
 //TODO refactor css classnames
 
 class MovieList extends React.Component {
     renderList() {
-        return this.props.fetchedMovies.map((movie) => {
+        return this.props.fetchedMovie.map((movie) => {
             return (
                 <div className="container" key={movie.imdbID}>
                     <div className="movie-content" onClick={() => this.props.fetchDetails(movie.imdbID)}>
@@ -27,7 +27,7 @@ class MovieList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return { fetchedMovies: state.fetchedMovies}
+    return { fetchedMovie: state.fetchedMovie}
 }
 
 export default connect(mapStateToProps, {fetchDetails})(MovieList);

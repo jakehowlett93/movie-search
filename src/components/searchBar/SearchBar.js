@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchMovies } from '../actions';
-import { searchValue } from '../actions';
+import fetchMovies from '../../actions/fetchMovies'
+import searchValue from '../../actions/searchValue';
 
 import './SearchBar.css';
 
