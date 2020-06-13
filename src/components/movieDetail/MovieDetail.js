@@ -13,7 +13,7 @@ const MovieDetail = ({ fetchedDetails, error }) => {
     
     return (
         <div className="details">
-            <h1>{fetchedDetails.Title} </h1>
+            <h1 className="details-title">{fetchedDetails.Title} </h1>
             <div className="images">
                 <img className="details-image" src={fetchedDetails.Poster} alt='The selected movie poster'></img>
                 <img className="blurred-image" src={fetchedDetails.Poster} alt='The selected movie poster'></img>
