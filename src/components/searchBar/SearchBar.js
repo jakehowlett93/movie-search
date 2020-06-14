@@ -37,7 +37,7 @@ const SearchBar = ({ fetchMovies, searchValue, currentValue }) => {
 }
 
 const mapStateToProps = (state) => {
-    return { currentValue: state.searchValue }
+    return { currentValue: state.searchedValue }
 }
 
 export default connect(mapStateToProps, { fetchMovies, searchValue })(SearchBar);

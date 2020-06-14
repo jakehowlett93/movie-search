@@ -4,7 +4,7 @@ import fetchError from '../fetchError';
 import fetchSuccess from '../fetchSuccess';
 
 const fetchMovies = () => async (dispatch, getState) => {
-    await ombd.get(`?apikey=13348aee&s=${getState().searchValue}&page=1`)
+    await ombd.get(`?apikey=13348aee&s=${getState().searchedValue}&page=1`)
     .then(response => {
         dispatch(clearDetails())
         if (response.data.Response === "False") {

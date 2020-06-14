@@ -8,7 +8,7 @@ import fetchedDetailsReducer from './fetchedDetailsReducer'
 
 
 export default combineReducers({
-    searchValue: searchedValueReducer,
+    searchedValue: searchedValueReducer,
     error: errorReducer,
     fetchedMovie: fetchedMovieReducer,
     selectedMovie: selectedMovieReducer,
