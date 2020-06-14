@@ -4,9 +4,6 @@ import MovieDetail from './movieDetail/MovieDetail';
 import SearchBar from './searchBar/SearchBar';
 import './app.css';
 
-//TODO need to refactor css classnames
-
-
 const App = () => {
     return (
         <div className="wrapper">

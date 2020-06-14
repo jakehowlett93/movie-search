@@ -6,10 +6,8 @@ import './movieList.css'
 
 class MovieList extends React.Component {
     
-    
     renderList() {
         return this.props.fetchedMovie.map((movie) => {
-
             const noImage = require('../../assets/noImage.png')
             const poster = movie.Poster === 'N/A' ? noImage : movie.Poster;    
             const altText = movie.Poster === 'N/A' ? 'Could not find movie poster' : 'A poster of the movie'
