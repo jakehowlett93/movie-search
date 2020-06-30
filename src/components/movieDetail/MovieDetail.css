@@ -25,7 +25,6 @@
 
 @media only screen and (min-width: 900px) {
     .blurred-image {
-        opacity: 20%;
         height: 300px;
     }
 
